@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.oude.broadcast" >
-
+    <!--无论哪种广播接收方式，权限都需要注册-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 <application
         android:allowBackup="true"
@@ -18,9 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--静态广播接收器第二步：注册广播
+            enabled代表启用
+            exported代表不在应用界面时也开启监听-->
         <receiver
             android:name=".StaticNetworkChangeReceiver"
-            android:enabled="false"
+            android:enabled="true"
             android:exported="true">
                 <intent-filter>
                     <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
