@@ -10,6 +10,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 import android.net.Network;
+import android.widget.Button;
+import android.view.View.OnClickListener;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity 
 {
@@ -18,6 +21,7 @@ public class MainActivity extends AppCompatActivity
     private IntentFilter intentFilter;
     private NetworkChangeReceiver networkChangeReceiver;
     **/
+    
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -30,6 +34,17 @@ public class MainActivity extends AppCompatActivity
         networkChangeReceiver =new NetworkChangeReceiver();
         registerReceiver(networkChangeReceiver,intentFilter);
         **/
+        Button activeBroadcast = (Button) findViewById(R.id.mainButton1);
+        activeBroadcast.setOnClickListener(new OnClickListener(){
+
+                @Override
+                public void onClick(View p1)
+                {
+                    Intent intent= new Intent("com.oude.broadcast.action.MY_BROADCAST");
+                    intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+                    sendOrderedBroadcast(intent,null);
+                }
+            });
     }
     
     /**

@@ -8,7 +8,8 @@
 	<Button
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="主动广播"/>
+		android:text="发送主动广播"
+		android:id="@+id/mainButton1"/>
 
 </LinearLayout>
 
